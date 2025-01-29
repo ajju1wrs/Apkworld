@@ -1,0 +1,67 @@
+import { Button } from "@/components/ui/button"
+import Image from "next/image"
+
+export default function AppDetails({ params }: { params: { slug: string } }) {
+  // In a real application, you would fetch the app details based on the slug
+  const appDetails = {
+    name: "Example App",
+    icon: "/placeholder.svg",
+    description:
+      "This is an example app description. It would typically include information about the app's features and functionality.",
+    developer: "Example Developer",
+    category: "Productivity",
+    rating: 4.5,
+    reviews: 1000,
+    lastUpdated: "2023-06-15",
+  }
+
+  return (
+    <div className="min-h-screen bg-gray-100 dark:bg-gray-900">
+      <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+        <div className="px-4 py-6 sm:px-0">
+          <div className="bg-white dark:bg-gray-800 shadow overflow-hidden sm:rounded-lg">
+            <div className="px-4 py-5 sm:px-6 flex items-center space-x-4">
+              <Image
+                src={appDetails.icon || "/placeholder.svg"}
+                alt={appDetails.name}
+                width={64}
+                height={64}
+                className="rounded-lg"
+              />
+              <div>
+                <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{appDetails.name}</h1>
+                <p className="mt-1 max-w-2xl text-sm text-gray-500 dark:text-gray-400">{appDetails.developer}</p>
+              </div>
+            </div>
+            <div className="border-t border-gray-200 dark:border-gray-700 px-4 py-5 sm:px-6">
+              <dl className="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
+                <div className="sm:col-span-1">
+                  <dt className="text-sm font-medium text-gray-500 dark:text-gray-400">Category</dt>
+                  <dd className="mt-1 text-sm text-gray-900 dark:text-white">{appDetails.category}</dd>
+                </div>
+                <div className="sm:col-span-1">
+                  <dt className="text-sm font-medium text-gray-500 dark:text-gray-400">Rating</dt>
+                  <dd className="mt-1 text-sm text-gray-900 dark:text-white">
+                    {appDetails.rating} ({appDetails.reviews} reviews)
+                  </dd>
+                </div>
+                <div className="sm:col-span-1">
+                  <dt className="text-sm font-medium text-gray-500 dark:text-gray-400">Last Updated</dt>
+                  <dd className="mt-1 text-sm text-gray-900 dark:text-white">{appDetails.lastUpdated}</dd>
+                </div>
+                <div className="sm:col-span-2">
+                  <dt className="text-sm font-medium text-gray-500 dark:text-gray-400">Description</dt>
+                  <dd className="mt-1 text-sm text-gray-900 dark:text-white">{appDetails.description}</dd>
+                </div>
+              </dl>
+            </div>
+            <div className="px-4 py-5 sm:px-6">
+              <Button className="w-full sm:w-auto">View in App Store</Button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  )
+}
+

@@ -1,0 +1,26 @@
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
+
+const categories = [
+  "Games",
+  "Social",
+  "Productivity",
+  "Entertainment",
+  "Education",
+  "Health & Fitness",
+  "Travel",
+  "Food & Drink",
+]
+
+export default function CategoryList() {
+  return (
+    <div className="flex flex-wrap gap-4">
+      {categories.map((category) => (
+        <Link key={category} href={`/category/${category.toLowerCase().replace(" & ", "-")}`}>
+          <Button variant="outline">{category}</Button>
+        </Link>
+      ))}
+    </div>
+  )
+}
+
